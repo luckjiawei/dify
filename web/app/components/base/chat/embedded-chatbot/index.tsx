@@ -1,26 +1,26 @@
+import AppUnavailable from '@/app/components/base/app-unavailable'
+import ChatWrapper from '@/app/components/base/chat/embedded-chatbot/chat-wrapper'
+import Header from '@/app/components/base/chat/embedded-chatbot/header'
+import Loading from '@/app/components/base/loading'
+import LogoHeader from '@/app/components/base/logo/logo-embedded-chat-header'
+import LogoSite from '@/app/components/base/logo/logo-site'
+import { checkOrSetAccessToken } from '@/app/components/share/utils'
+import useBreakpoints, { MediaType } from '@/hooks/use-breakpoints'
+import cn from '@/utils/classnames'
+import { useAsyncEffect } from 'ahooks'
 import {
   useEffect,
   useState,
 } from 'react'
-import { useAsyncEffect } from 'ahooks'
 import { useTranslation } from 'react-i18next'
 import {
   EmbeddedChatbotContext,
   useEmbeddedChatbotContext,
 } from './context'
 import { useEmbeddedChatbot } from './hooks'
-import { isDify } from './utils'
 import { useThemeContext } from './theme/theme-context'
 import { CssTransform } from './theme/utils'
-import { checkOrSetAccessToken } from '@/app/components/share/utils'
-import AppUnavailable from '@/app/components/base/app-unavailable'
-import useBreakpoints, { MediaType } from '@/hooks/use-breakpoints'
-import Loading from '@/app/components/base/loading'
-import LogoHeader from '@/app/components/base/logo/logo-embedded-chat-header'
-import Header from '@/app/components/base/chat/embedded-chatbot/header'
-import ChatWrapper from '@/app/components/base/chat/embedded-chatbot/chat-wrapper'
-import LogoSite from '@/app/components/base/logo/logo-site'
-import cn from '@/utils/classnames'
+import { isDify } from './utils'
 
 const Chatbot = () => {
   const {
@@ -47,7 +47,7 @@ const Chatbot = () => {
       if (customConfig)
         document.title = `${site.title}`
       else
-        document.title = `${site.title} - Powered by Dify`
+        document.title = `${site.title}`
     }
   }, [site, customConfig, themeBuilder])
 
@@ -115,7 +115,7 @@ const Chatbot = () => {
             )}>
               <div className='system-2xs-medium-uppercase text-text-tertiary'>{t('share.chat.poweredBy')}</div>
               {appData?.custom_config?.replace_webapp_logo && (
-                <img src={appData?.custom_config?.replace_webapp_logo} alt='logo' className='block h-5 w-auto' />
+                <img src={appData?.custom_config?.replace_webapp_logo} alt='logo' className='block w-auto h-5' />
               )}
               {!appData?.custom_config?.replace_webapp_logo && (
                 <LogoSite className='!h-5' />

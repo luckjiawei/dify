@@ -1,25 +1,25 @@
+import AppUnavailable from '@/app/components/base/app-unavailable'
+import Loading from '@/app/components/base/loading'
+import { checkOrSetAccessToken } from '@/app/components/share/utils'
+import useBreakpoints, { MediaType } from '@/hooks/use-breakpoints'
+import type { InstalledApp } from '@/models/explore'
+import cn from '@/utils/classnames'
+import { useAsyncEffect } from 'ahooks'
 import type { FC } from 'react'
 import {
   useEffect,
   useState,
 } from 'react'
-import { useAsyncEffect } from 'ahooks'
 import { useThemeContext } from '../embedded-chatbot/theme/theme-context'
+import ChatWrapper from './chat-wrapper'
 import {
   ChatWithHistoryContext,
   useChatWithHistoryContext,
 } from './context'
-import { useChatWithHistory } from './hooks'
-import Sidebar from './sidebar'
 import Header from './header'
 import HeaderInMobile from './header-in-mobile'
-import ChatWrapper from './chat-wrapper'
-import type { InstalledApp } from '@/models/explore'
-import Loading from '@/app/components/base/loading'
-import useBreakpoints, { MediaType } from '@/hooks/use-breakpoints'
-import { checkOrSetAccessToken } from '@/app/components/share/utils'
-import AppUnavailable from '@/app/components/base/app-unavailable'
-import cn from '@/utils/classnames'
+import { useChatWithHistory } from './hooks'
+import Sidebar from './sidebar'
 
 type ChatWithHistoryProps = {
   className?: string
@@ -49,7 +49,7 @@ const ChatWithHistory: FC<ChatWithHistoryProps> = ({
       if (customConfig)
         document.title = `${site.title}`
       else
-        document.title = `${site.title} - Powered by Dify`
+        document.title = `${site.title}`
     }
   }, [site, customConfig, themeBuilder])
 
